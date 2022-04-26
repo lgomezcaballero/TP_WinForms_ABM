@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace WinForms_ABM
 {
-    internal class Marca
+    class Marca
     {
-        public int id { get; set; }
-
+        public int  ID { get; set; }
         public string Descripcion { get; set; }
-
     }
 }

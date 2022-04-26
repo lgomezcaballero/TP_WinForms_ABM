@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace WinForms_ABM
 {
-    internal class Categoria
+    class Categoria
     {
+        public int ID { get; set; }
+        public string Descripcion { get; set; }
     }
 }
