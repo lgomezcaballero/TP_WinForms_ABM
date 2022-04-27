@@ -55,6 +55,7 @@ namespace WinForms_ABM
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.Size = new System.Drawing.Size(532, 271);
             this.dgvDatos.TabIndex = 1;
+            this.dgvDatos.SelectionChanged += new System.EventHandler(this.dgvDatos_SelectionChanged);
             // 
             // lblListaArticulos
             // 
@@ -143,6 +144,7 @@ namespace WinForms_ABM
             this.pbImagen.Location = new System.Drawing.Point(6, 6);
             this.pbImagen.Name = "pbImagen";
             this.pbImagen.Size = new System.Drawing.Size(294, 359);
+            this.pbImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbImagen.TabIndex = 0;
             this.pbImagen.TabStop = false;
             // 

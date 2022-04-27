@@ -21,7 +21,7 @@ namespace WinForms_ABM
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
                 comando.CommandText = "Select a.ID, a.Codigo, a.Nombre, a.Descripcion, m.Descripcion Marca," +
-                    " c.Descripcion Categoria, a.Precio From ARTICULOS a Inner Join MARCAS m on a.IdMarca = m.Id" +
+                    " c.Descripcion Categoria, a.ImagenUrl, a.Precio From ARTICULOS a Inner Join MARCAS m on a.IdMarca = m.Id" +
                     " Inner Join CATEGORIAS c on a.IdCategoria = c.Id";
                 comando.Connection = conexion;
                 
@@ -39,6 +39,7 @@ namespace WinForms_ABM
                     aux.Marca.Descripcion = (string)lector["Marca"];
                     aux.Categoria = new Categoria();
                     aux.Categoria.Descripcion= (string)lector["Categoria"];
+                    aux.ImagenUrl = (string)lector["ImagenUrl"];
                     aux.Precio = (decimal)lector["Precio"];
 
                     lista.Add(aux);
