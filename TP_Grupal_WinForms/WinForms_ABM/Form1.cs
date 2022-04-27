@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace WinForms_ABM
 {
-    public partial class Form1 : Form
+    public partial class FormInicio : Form
     {
-        public Form1()
+        public FormInicio()
         {
             InitializeComponent();
+        }
+
+        private void FormInicio_Load(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            dgvDatos.DataSource = negocio.listar();
         }
     }
 }

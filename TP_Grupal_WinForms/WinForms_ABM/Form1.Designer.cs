@@ -1,7 +1,7 @@
 ﻿
 namespace WinForms_ABM
 {
-    partial class Form1
+    partial class FormInicio
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -29,13 +29,151 @@ namespace WinForms_ABM
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.dgvDatos = new System.Windows.Forms.DataGridView();
+            this.lblListaArticulos = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblCatalogo = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.pbImagen = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // dgvDatos
+            // 
+            this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDatos.Location = new System.Drawing.Point(3, 46);
+            this.dgvDatos.Name = "dgvDatos";
+            this.dgvDatos.Size = new System.Drawing.Size(538, 271);
+            this.dgvDatos.TabIndex = 1;
+            // 
+            // lblListaArticulos
+            // 
+            this.lblListaArticulos.AutoSize = true;
+            this.lblListaArticulos.Location = new System.Drawing.Point(12, 19);
+            this.lblListaArticulos.Name = "lblListaArticulos";
+            this.lblListaArticulos.Size = new System.Drawing.Size(86, 13);
+            this.lblListaArticulos.TabIndex = 2;
+            this.lblListaArticulos.Text = "Lista de articulos";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.panel1.Controls.Add(this.lblCatalogo);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(911, 70);
+            this.panel1.TabIndex = 3;
+            // 
+            // lblCatalogo
+            // 
+            this.lblCatalogo.AutoSize = true;
+            this.lblCatalogo.Location = new System.Drawing.Point(291, 31);
+            this.lblCatalogo.Name = "lblCatalogo";
+            this.lblCatalogo.Size = new System.Drawing.Size(154, 13);
+            this.lblCatalogo.TabIndex = 0;
+            this.lblCatalogo.Text = "CATALOGO DE PRODUCTOS";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel2.Controls.Add(this.btnEditar);
+            this.panel2.Controls.Add(this.btnEliminar);
+            this.panel2.Controls.Add(this.btnAgregar);
+            this.panel2.Controls.Add(this.dgvDatos);
+            this.panel2.Controls.Add(this.lblListaArticulos);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 70);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(608, 401);
+            this.panel2.TabIndex = 4;
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Location = new System.Drawing.Point(111, 342);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(75, 23);
+            this.btnEditar.TabIndex = 5;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(212, 342);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.TabIndex = 4;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Location = new System.Drawing.Point(12, 342);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.TabIndex = 3;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.LightSlateGray;
+            this.panel3.Controls.Add(this.pbImagen);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel3.Location = new System.Drawing.Point(608, 70);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(303, 401);
+            this.panel3.TabIndex = 5;
+            // 
+            // pbImagen
+            // 
+            this.pbImagen.Location = new System.Drawing.Point(6, 6);
+            this.pbImagen.Name = "pbImagen";
+            this.pbImagen.Size = new System.Drawing.Size(294, 359);
+            this.pbImagen.TabIndex = 0;
+            this.pbImagen.TabStop = false;
+            // 
+            // FormInicio
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(911, 471);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.Name = "FormInicio";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.FormInicio_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+        private System.Windows.Forms.DataGridView dgvDatos;
+        private System.Windows.Forms.Label lblListaArticulos;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.PictureBox pbImagen;
+        private System.Windows.Forms.Label lblCatalogo;
     }
 }
 
