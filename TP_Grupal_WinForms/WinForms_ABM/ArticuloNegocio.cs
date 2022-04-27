@@ -50,7 +50,7 @@ namespace WinForms_ABM
             }
             catch (Exception ex)
             {
-
+                //Prueba
                 throw ex;
             }
         }
