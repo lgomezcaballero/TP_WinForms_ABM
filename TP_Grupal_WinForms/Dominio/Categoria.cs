@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WinForms_ABM
+namespace Dominio
 {
-    class Marca
+    public class Categoria
     {
-        public int  ID { get; set; }
+        public int ID { get; set; }
         public string Descripcion { get; set; }
     }
 }

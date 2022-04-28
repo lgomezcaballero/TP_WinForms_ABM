@@ -39,6 +39,8 @@ namespace WinForms_ABM
             this.btnAgregar = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pbImagen = new System.Windows.Forms.PictureBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -51,7 +53,7 @@ namespace WinForms_ABM
             this.dgvDatos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDatos.Location = new System.Drawing.Point(3, 46);
+            this.dgvDatos.Location = new System.Drawing.Point(23, 81);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.Size = new System.Drawing.Size(532, 271);
             this.dgvDatos.TabIndex = 1;
@@ -73,7 +75,7 @@ namespace WinForms_ABM
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(911, 70);
+            this.panel1.Size = new System.Drawing.Size(911, 50);
             this.panel1.TabIndex = 3;
             // 
             // lblCatalogo
@@ -91,19 +93,21 @@ namespace WinForms_ABM
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel2.Controls.Add(this.comboBox1);
+            this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.btnEditar);
             this.panel2.Controls.Add(this.btnEliminar);
             this.panel2.Controls.Add(this.btnAgregar);
             this.panel2.Controls.Add(this.dgvDatos);
             this.panel2.Controls.Add(this.lblListaArticulos);
-            this.panel2.Location = new System.Drawing.Point(0, 70);
+            this.panel2.Location = new System.Drawing.Point(0, 49);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(608, 401);
+            this.panel2.Size = new System.Drawing.Size(608, 422);
             this.panel2.TabIndex = 4;
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(111, 342);
+            this.btnEditar.Location = new System.Drawing.Point(139, 369);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(75, 23);
             this.btnEditar.TabIndex = 5;
@@ -112,7 +116,7 @@ namespace WinForms_ABM
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(212, 342);
+            this.btnEliminar.Location = new System.Drawing.Point(264, 369);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 4;
@@ -121,7 +125,7 @@ namespace WinForms_ABM
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(12, 342);
+            this.btnAgregar.Location = new System.Drawing.Point(23, 369);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 3;
@@ -134,9 +138,9 @@ namespace WinForms_ABM
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.LightSlateGray;
             this.panel3.Controls.Add(this.pbImagen);
-            this.panel3.Location = new System.Drawing.Point(608, 70);
+            this.panel3.Location = new System.Drawing.Point(608, 49);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(303, 401);
+            this.panel3.Size = new System.Drawing.Size(303, 422);
             this.panel3.TabIndex = 5;
             // 
             // pbImagen
@@ -147,6 +151,21 @@ namespace WinForms_ABM
             this.pbImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbImagen.TabIndex = 0;
             this.pbImagen.TabStop = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(23, 55);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(422, 20);
+            this.textBox1.TabIndex = 6;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(451, 54);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(104, 21);
+            this.comboBox1.TabIndex = 7;
             // 
             // FormInicio
             // 
@@ -181,6 +200,8 @@ namespace WinForms_ABM
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pbImagen;
         private System.Windows.Forms.Label lblCatalogo;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
