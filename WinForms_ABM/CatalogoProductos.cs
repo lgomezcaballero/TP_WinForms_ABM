@@ -41,7 +41,7 @@ namespace WinForms_ABM
                 pbImagen.Load(url);
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 pbImagen.Load("https://www.agora-gallery.com/advice/wp-content/uploads/2015/10/image-placeholder.png");
             }
