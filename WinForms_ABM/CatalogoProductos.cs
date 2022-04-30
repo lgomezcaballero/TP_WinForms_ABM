@@ -23,11 +23,19 @@ namespace WinForms_ABM
         private void FormInicio_Load(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
-            listaArticulos = negocio.listar();
-            dgvDatos.DataSource = listaArticulos;
-            dgvDatos.Columns["ImagenUrl"].Visible = false;
-            //dgvDatos.Columns["Codigo"].Width = 40;
-            cargarImagen(listaArticulos[0].ImagenUrl);
+            try
+            {
+                listaArticulos = negocio.listar();
+                dgvDatos.DataSource = listaArticulos;
+                dgvDatos.Columns["ImagenUrl"].Visible = false;
+                //dgvDatos.Columns["Codigo"].Width = 40;
+                cargarImagen(listaArticulos[0].ImagenUrl);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void dgvDatos_SelectionChanged(object sender, EventArgs e)
