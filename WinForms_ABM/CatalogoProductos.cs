@@ -46,5 +46,11 @@ namespace WinForms_ABM
                 pbImagen.Load("https://www.agora-gallery.com/advice/wp-content/uploads/2015/10/image-placeholder.png");
             }
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmAltaArticulo alta = new frmAltaArticulo();
+            alta.ShowDialog();
+        }
     }
 }

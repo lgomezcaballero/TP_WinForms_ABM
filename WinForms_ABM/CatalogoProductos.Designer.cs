@@ -34,13 +34,13 @@ namespace WinForms_ABM
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblCatalogo = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pbImagen = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -105,6 +105,21 @@ namespace WinForms_ABM
             this.panel2.Size = new System.Drawing.Size(608, 422);
             this.panel2.TabIndex = 4;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(451, 54);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(104, 21);
+            this.comboBox1.TabIndex = 7;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(23, 55);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(422, 20);
+            this.textBox1.TabIndex = 6;
+            // 
             // btnEditar
             // 
             this.btnEditar.Location = new System.Drawing.Point(139, 369);
@@ -131,6 +146,7 @@ namespace WinForms_ABM
             this.btnAgregar.TabIndex = 3;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // panel3
             // 
@@ -151,21 +167,6 @@ namespace WinForms_ABM
             this.pbImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbImagen.TabIndex = 0;
             this.pbImagen.TabStop = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(23, 55);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(422, 20);
-            this.textBox1.TabIndex = 6;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(451, 54);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(104, 21);
-            this.comboBox1.TabIndex = 7;
             // 
             // FormInicio
             // 
