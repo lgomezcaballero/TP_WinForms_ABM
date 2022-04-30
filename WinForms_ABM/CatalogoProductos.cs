@@ -25,6 +25,8 @@ namespace WinForms_ABM
             ArticuloNegocio negocio = new ArticuloNegocio();
             listaArticulos = negocio.listar();
             dgvDatos.DataSource = listaArticulos;
+            dgvDatos.Columns["ImagenUrl"].Visible = false;
+            //dgvDatos.Columns["Codigo"].Width = 40;
             cargarImagen(listaArticulos[0].ImagenUrl);
         }
 

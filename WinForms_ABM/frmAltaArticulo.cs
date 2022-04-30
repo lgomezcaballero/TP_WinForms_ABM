@@ -28,6 +28,8 @@ namespace WinForms_ABM
                 articulo.Codigo = tbxCodigo.Text;
                 articulo.Nombre = tbxNombre.Text;
                 articulo.Descripcion = tbxDescripcion.Text;
+                articulo.Marca = (Marca)cbxMarca.SelectedItem;
+                articulo.Categoria = (Categoria)cbxCategoria.SelectedItem;
                 articulo.Precio = Convert.ToDecimal(tbxPrecio.Text);
                 datos.agregarArticulo(articulo);
                 MessageBox.Show("El artículo se ha agregado exitosamente");
@@ -43,6 +45,15 @@ namespace WinForms_ABM
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void frmAltaArticulo_Load(object sender, EventArgs e)
+        {
+            MarcaNegocio marca = new MarcaNegocio();
+            cbxMarca.DataSource = marca.listar();
+
+            CategoriaNegocio categoria = new CategoriaNegocio();
+            cbxCategoria.DataSource = categoria.listar();
         }
     }
 }

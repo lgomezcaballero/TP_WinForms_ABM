@@ -41,6 +41,8 @@ namespace WinForms_ABM
             this.tbxPrecio = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.cbxMarca = new System.Windows.Forms.ComboBox();
+            this.cbxCategoria = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblCodigo
@@ -101,33 +103,33 @@ namespace WinForms_ABM
             // 
             this.tbxCodigo.Location = new System.Drawing.Point(123, 39);
             this.tbxCodigo.Name = "tbxCodigo";
-            this.tbxCodigo.Size = new System.Drawing.Size(100, 20);
+            this.tbxCodigo.Size = new System.Drawing.Size(121, 20);
             this.tbxCodigo.TabIndex = 6;
             // 
             // tbxNombre
             // 
             this.tbxNombre.Location = new System.Drawing.Point(123, 68);
             this.tbxNombre.Name = "tbxNombre";
-            this.tbxNombre.Size = new System.Drawing.Size(100, 20);
+            this.tbxNombre.Size = new System.Drawing.Size(121, 20);
             this.tbxNombre.TabIndex = 7;
             // 
             // tbxDescripcion
             // 
             this.tbxDescripcion.Location = new System.Drawing.Point(123, 98);
             this.tbxDescripcion.Name = "tbxDescripcion";
-            this.tbxDescripcion.Size = new System.Drawing.Size(100, 20);
+            this.tbxDescripcion.Size = new System.Drawing.Size(121, 20);
             this.tbxDescripcion.TabIndex = 8;
             // 
             // tbxPrecio
             // 
             this.tbxPrecio.Location = new System.Drawing.Point(123, 178);
             this.tbxPrecio.Name = "tbxPrecio";
-            this.tbxPrecio.Size = new System.Drawing.Size(100, 20);
+            this.tbxPrecio.Size = new System.Drawing.Size(121, 20);
             this.tbxPrecio.TabIndex = 9;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(19, 269);
+            this.btnAgregar.Location = new System.Drawing.Point(31, 224);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 10;
@@ -137,7 +139,7 @@ namespace WinForms_ABM
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(148, 269);
+            this.btnSalir.Location = new System.Drawing.Point(141, 224);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 11;
@@ -145,11 +147,31 @@ namespace WinForms_ABM
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // cbxMarca
+            // 
+            this.cbxMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxMarca.FormattingEnabled = true;
+            this.cbxMarca.Location = new System.Drawing.Point(123, 126);
+            this.cbxMarca.Name = "cbxMarca";
+            this.cbxMarca.Size = new System.Drawing.Size(121, 21);
+            this.cbxMarca.TabIndex = 12;
+            // 
+            // cbxCategoria
+            // 
+            this.cbxCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxCategoria.FormattingEnabled = true;
+            this.cbxCategoria.Location = new System.Drawing.Point(123, 153);
+            this.cbxCategoria.Name = "cbxCategoria";
+            this.cbxCategoria.Size = new System.Drawing.Size(121, 21);
+            this.cbxCategoria.TabIndex = 13;
+            // 
             // frmAltaArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(310, 381);
+            this.ClientSize = new System.Drawing.Size(272, 289);
+            this.Controls.Add(this.cbxCategoria);
+            this.Controls.Add(this.cbxMarca);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.tbxPrecio);
@@ -164,6 +186,7 @@ namespace WinForms_ABM
             this.Controls.Add(this.lblCodigo);
             this.Name = "frmAltaArticulo";
             this.Text = "Agregar Artículo";
+            this.Load += new System.EventHandler(this.frmAltaArticulo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,5 +206,7 @@ namespace WinForms_ABM
         private System.Windows.Forms.TextBox tbxPrecio;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.ComboBox cbxMarca;
+        private System.Windows.Forms.ComboBox cbxCategoria;
     }
 }
