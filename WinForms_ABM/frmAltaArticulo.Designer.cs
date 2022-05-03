@@ -43,6 +43,10 @@ namespace WinForms_ABM
             this.btnSalir = new System.Windows.Forms.Button();
             this.cbxMarca = new System.Windows.Forms.ComboBox();
             this.cbxCategoria = new System.Windows.Forms.ComboBox();
+            this.tbxImagenUrl = new System.Windows.Forms.TextBox();
+            this.lblImagenUrl = new System.Windows.Forms.Label();
+            this.pbImagen = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCodigo
@@ -75,7 +79,7 @@ namespace WinForms_ABM
             // lblMarca
             // 
             this.lblMarca.AutoSize = true;
-            this.lblMarca.Location = new System.Drawing.Point(24, 126);
+            this.lblMarca.Location = new System.Drawing.Point(24, 146);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Size = new System.Drawing.Size(37, 13);
             this.lblMarca.TabIndex = 3;
@@ -84,7 +88,7 @@ namespace WinForms_ABM
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Location = new System.Drawing.Point(16, 153);
+            this.lblCategoria.Location = new System.Drawing.Point(19, 173);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(52, 13);
             this.lblCategoria.TabIndex = 4;
@@ -93,7 +97,7 @@ namespace WinForms_ABM
             // lblPrecio
             // 
             this.lblPrecio.AutoSize = true;
-            this.lblPrecio.Location = new System.Drawing.Point(28, 181);
+            this.lblPrecio.Location = new System.Drawing.Point(31, 198);
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.Size = new System.Drawing.Size(37, 13);
             this.lblPrecio.TabIndex = 5;
@@ -101,38 +105,38 @@ namespace WinForms_ABM
             // 
             // tbxCodigo
             // 
-            this.tbxCodigo.Location = new System.Drawing.Point(123, 39);
+            this.tbxCodigo.Location = new System.Drawing.Point(123, 32);
             this.tbxCodigo.Name = "tbxCodigo";
             this.tbxCodigo.Size = new System.Drawing.Size(121, 20);
-            this.tbxCodigo.TabIndex = 6;
+            this.tbxCodigo.TabIndex = 0;
             // 
             // tbxNombre
             // 
-            this.tbxNombre.Location = new System.Drawing.Point(123, 68);
+            this.tbxNombre.Location = new System.Drawing.Point(123, 61);
             this.tbxNombre.Name = "tbxNombre";
             this.tbxNombre.Size = new System.Drawing.Size(121, 20);
-            this.tbxNombre.TabIndex = 7;
+            this.tbxNombre.TabIndex = 1;
             // 
             // tbxDescripcion
             // 
-            this.tbxDescripcion.Location = new System.Drawing.Point(123, 98);
+            this.tbxDescripcion.Location = new System.Drawing.Point(123, 91);
             this.tbxDescripcion.Name = "tbxDescripcion";
             this.tbxDescripcion.Size = new System.Drawing.Size(121, 20);
-            this.tbxDescripcion.TabIndex = 8;
+            this.tbxDescripcion.TabIndex = 2;
             // 
             // tbxPrecio
             // 
-            this.tbxPrecio.Location = new System.Drawing.Point(123, 178);
+            this.tbxPrecio.Location = new System.Drawing.Point(123, 198);
             this.tbxPrecio.Name = "tbxPrecio";
             this.tbxPrecio.Size = new System.Drawing.Size(121, 20);
-            this.tbxPrecio.TabIndex = 9;
+            this.tbxPrecio.TabIndex = 6;
             // 
             // btnAgregar
             // 
             this.btnAgregar.Location = new System.Drawing.Point(31, 224);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 10;
+            this.btnAgregar.TabIndex = 7;
             this.btnAgregar.Text = "Aceptar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -142,7 +146,7 @@ namespace WinForms_ABM
             this.btnSalir.Location = new System.Drawing.Point(141, 224);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
-            this.btnSalir.TabIndex = 11;
+            this.btnSalir.TabIndex = 8;
             this.btnSalir.Text = "Cancelar";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
@@ -151,25 +155,54 @@ namespace WinForms_ABM
             // 
             this.cbxMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxMarca.FormattingEnabled = true;
-            this.cbxMarca.Location = new System.Drawing.Point(123, 126);
+            this.cbxMarca.Location = new System.Drawing.Point(123, 146);
             this.cbxMarca.Name = "cbxMarca";
             this.cbxMarca.Size = new System.Drawing.Size(121, 21);
-            this.cbxMarca.TabIndex = 12;
+            this.cbxMarca.TabIndex = 4;
             // 
             // cbxCategoria
             // 
             this.cbxCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCategoria.FormattingEnabled = true;
-            this.cbxCategoria.Location = new System.Drawing.Point(123, 153);
+            this.cbxCategoria.Location = new System.Drawing.Point(123, 173);
             this.cbxCategoria.Name = "cbxCategoria";
             this.cbxCategoria.Size = new System.Drawing.Size(121, 21);
-            this.cbxCategoria.TabIndex = 13;
+            this.cbxCategoria.TabIndex = 5;
+            // 
+            // tbxImagenUrl
+            // 
+            this.tbxImagenUrl.Location = new System.Drawing.Point(123, 117);
+            this.tbxImagenUrl.Name = "tbxImagenUrl";
+            this.tbxImagenUrl.Size = new System.Drawing.Size(121, 20);
+            this.tbxImagenUrl.TabIndex = 3;
+            this.tbxImagenUrl.Leave += new System.EventHandler(this.txbImagenUrl_Leave);
+            // 
+            // lblImagenUrl
+            // 
+            this.lblImagenUrl.AutoSize = true;
+            this.lblImagenUrl.Location = new System.Drawing.Point(19, 120);
+            this.lblImagenUrl.Name = "lblImagenUrl";
+            this.lblImagenUrl.Size = new System.Drawing.Size(58, 13);
+            this.lblImagenUrl.TabIndex = 15;
+            this.lblImagenUrl.Text = "Imagen Url";
+            // 
+            // pbImagen
+            // 
+            this.pbImagen.Location = new System.Drawing.Point(271, 33);
+            this.pbImagen.Name = "pbImagen";
+            this.pbImagen.Size = new System.Drawing.Size(265, 213);
+            this.pbImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbImagen.TabIndex = 16;
+            this.pbImagen.TabStop = false;
             // 
             // frmAltaArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(272, 289);
+            this.ClientSize = new System.Drawing.Size(567, 291);
+            this.Controls.Add(this.pbImagen);
+            this.Controls.Add(this.lblImagenUrl);
+            this.Controls.Add(this.tbxImagenUrl);
             this.Controls.Add(this.cbxCategoria);
             this.Controls.Add(this.cbxMarca);
             this.Controls.Add(this.btnSalir);
@@ -187,6 +220,7 @@ namespace WinForms_ABM
             this.Name = "frmAltaArticulo";
             this.Text = "Agregar Artículo";
             this.Load += new System.EventHandler(this.frmAltaArticulo_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -208,5 +242,8 @@ namespace WinForms_ABM
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.ComboBox cbxMarca;
         private System.Windows.Forms.ComboBox cbxCategoria;
+        private System.Windows.Forms.TextBox tbxImagenUrl;
+        private System.Windows.Forms.Label lblImagenUrl;
+        private System.Windows.Forms.PictureBox pbImagen;
     }
 }

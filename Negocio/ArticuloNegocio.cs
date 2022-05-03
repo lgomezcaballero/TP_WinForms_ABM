@@ -78,13 +78,14 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setConsulta("Insert Into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio)" +
-                    " Values (@Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @Precio)");
+                datos.setConsulta("Insert Into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio)" +
+                    " Values (@Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @ImagenUrl, @Precio)");
                 datos.setParametros("@Codigo", articulo.Codigo);
                 datos.setParametros("@Nombre", articulo.Nombre);
                 datos.setParametros("@Descripcion", articulo.Descripcion);
                 datos.setParametros("@IdMarca", articulo.Marca.ID);
                 datos.setParametros("@IdCategoria", articulo.Categoria.ID);
+                datos.setParametros("@ImagenUrl", articulo.ImagenUrl);
                 datos.setParametros("@Precio", articulo.Precio);
                 datos.ejecutarAccion();
             }

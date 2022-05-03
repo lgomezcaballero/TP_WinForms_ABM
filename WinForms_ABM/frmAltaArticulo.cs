@@ -28,6 +28,7 @@ namespace WinForms_ABM
                 articulo.Codigo = tbxCodigo.Text;
                 articulo.Nombre = tbxNombre.Text;
                 articulo.Descripcion = tbxDescripcion.Text;
+                articulo.ImagenUrl = tbxImagenUrl.Text;
                 articulo.Marca = (Marca)cbxMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cbxCategoria.SelectedItem;
                 articulo.Precio = Convert.ToDecimal(tbxPrecio.Text);
@@ -54,6 +55,24 @@ namespace WinForms_ABM
 
             CategoriaNegocio categoria = new CategoriaNegocio();
             cbxCategoria.DataSource = categoria.listar();
+        }
+
+        private void txbImagenUrl_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(tbxImagenUrl.Text);
+        }
+
+        private void cargarImagen(string url)
+        {
+            try
+            {
+                pbImagen.Load(url);
+
+            }
+            catch (Exception)
+            {
+                pbImagen.Load("https://www.agora-gallery.com/advice/wp-content/uploads/2015/10/image-placeholder.png");
+            }
         }
     }
 }
