@@ -25,8 +25,8 @@ namespace Negocio
                 //comando.CommandText = "Select a.ID, a.Codigo, a.Nombre, a.Descripcion, m.Descripcion Marca," +
                 //    " c.Descripcion Categoria, a.ImagenUrl, a.Precio From ARTICULOS a Inner Join MARCAS m on a.IdMarca = m.Id" +
                 //    " Inner Join CATEGORIAS c on a.IdCategoria = c.Id";
-                datos.setConsulta("Select a.ID, a.Codigo, a.Nombre, a.Descripcion, m.Descripcion Marca," +
-                    " c.Descripcion Categoria, a.ImagenUrl, a.Precio From ARTICULOS a Inner Join MARCAS m on a.IdMarca = m.Id" +
+                datos.setConsulta("Select a.ID IDArticulo, a.Codigo, a.Nombre, a.Descripcion, m.Id IdMarca ,m.Descripcion Marca, c.Id IdCategoria," +
+                    " c.Descripcion Categoria, a.ImagenUrl,  a.Precio From ARTICULOS a Inner Join MARCAS m on a.IdMarca = m.Id" +
                     " Inner Join CATEGORIAS c on a.IdCategoria = c.Id");
                 datos.ejecutarLectura();
                 //comando.Connection = conexion;
@@ -37,7 +37,7 @@ namespace Negocio
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
-                    aux.ID = (int)datos.Lector["ID"];
+                    aux.ID = (int)datos.Lector["IDArticulo"];
                     if(!(datos.Lector["Codigo"] is DBNull))
                         aux.Codigo = (string)datos.Lector["Codigo"];
                     if(!(datos.Lector["Nombre"] is DBNull))
@@ -46,9 +46,11 @@ namespace Negocio
                         aux.Descripcion= (string)datos.Lector["Descripcion"];
                     if(!(datos.Lector["Marca"] is DBNull))
                         aux.Marca = new Marca();
+                        aux.Marca.ID = (int)datos.Lector["IdMarca"]; 
                         aux.Marca.Descripcion = (string)datos.Lector["Marca"];
                     if(!(datos.Lector["Categoria"] is DBNull))
                         aux.Categoria = new Categoria();
+                        aux.Categoria.ID = (int)datos.Lector["IdCategoria"];
                         aux.Categoria.Descripcion= (string)datos.Lector["Categoria"];
                     if(!(datos.Lector["ImagenUrl"] is DBNull))
                         aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
@@ -98,6 +100,23 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
+        }
+
+
+        public void modificarArticulo(Articulo articulo) 
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                //datos.setConsulta();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
     }
 }

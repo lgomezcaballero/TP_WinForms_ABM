@@ -14,17 +14,32 @@ namespace WinForms_ABM
 {
     public partial class frmAltaArticulo : Form
     {
+
+        private Articulo articulo = null;
+
         public frmAltaArticulo()
         {
             InitializeComponent();
         }
 
+
+        public frmAltaArticulo(Articulo articulo)
+        {
+
+            InitializeComponent();
+            this.articulo = articulo;
+            Text = "Modificar articulo";
+        }
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Articulo articulo = new Articulo();
+            //Articulo articulo = new Articulo();
             ArticuloNegocio datos = new ArticuloNegocio();
             try
             {
+                 if(articulo == null)
+                   articulo = new Articulo();   
+
                 articulo.Codigo = tbxCodigo.Text;
                 articulo.Nombre = tbxNombre.Text;
                 articulo.Descripcion = tbxDescripcion.Text;
@@ -32,9 +47,23 @@ namespace WinForms_ABM
                 articulo.Marca = (Marca)cbxMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cbxCategoria.SelectedItem;
                 articulo.Precio = Convert.ToDecimal(tbxPrecio.Text);
+                
+                if(articulo.ID != 0)
+                {
+                datos.modificarArticulo(articulo);
+                MessageBox.Show("El artículo se ha modificado exitosamente");   
+                }
+
+                else
+                {
                 datos.agregarArticulo(articulo);
                 MessageBox.Show("El artículo se ha agregado exitosamente");
+                }
+
+                 
                 Close();
+
+
             }
             catch (Exception ex)
             {
@@ -50,11 +79,40 @@ namespace WinForms_ABM
 
         private void frmAltaArticulo_Load(object sender, EventArgs e)
         {
-            MarcaNegocio marca = new MarcaNegocio();
-            cbxMarca.DataSource = marca.listar();
 
-            CategoriaNegocio categoria = new CategoriaNegocio();
-            cbxCategoria.DataSource = categoria.listar();
+                MarcaNegocio marca = new MarcaNegocio();
+                CategoriaNegocio categoria = new CategoriaNegocio();
+            try
+            {
+                cbxMarca.DataSource = marca.listar();
+                cbxMarca.ValueMember = "ID";
+                cbxMarca.DisplayMember = "Descripcion";
+                cbxCategoria.DataSource = categoria.listar();
+                cbxCategoria.ValueMember = "ID";
+                cbxCategoria.DisplayMember = "Descripcion";
+
+                 if(articulo != null) 
+                 {
+                    tbxCodigo.Text = articulo.Codigo;  
+                    tbxNombre.Text = articulo.Nombre;   
+                    tbxDescripcion.Text = articulo.Descripcion; 
+                    tbxImagenUrl.Text = articulo.ImagenUrl;
+                    tbxPrecio.Text = articulo.Precio.ToString();
+                    cargarImagen(articulo.ImagenUrl);
+                    cbxMarca.SelectedValue = articulo.Marca.ID;    
+                    cbxCategoria.SelectedValue = articulo.Categoria.ID;    
+            
+                 }
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+
+
+
         }
 
         private void txbImagenUrl_Leave(object sender, EventArgs e)

@@ -69,5 +69,16 @@ namespace WinForms_ABM
             actualizar();
         }
 
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            //Selecciona el articulo actual
+            Articulo selecionado;
+            selecionado = (Articulo)dgvDatos.CurrentRow.DataBoundItem;
+            
+            
+            frmAltaArticulo modoficar = new frmAltaArticulo(selecionado);  
+            modoficar.ShowDialog(); 
+            //Cargar();
+        }
     }
 }
