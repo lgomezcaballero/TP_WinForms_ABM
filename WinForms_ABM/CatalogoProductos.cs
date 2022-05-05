@@ -80,5 +80,34 @@ namespace WinForms_ABM
             modoficar.ShowDialog(); 
             //Cargar();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+
+            ArticuloNegocio articulo = new ArticuloNegocio();
+            Articulo seleccionado = new Articulo();
+
+
+            try
+            {
+
+                DialogResult Respuesta = MessageBox.Show("¿Esta seguro que quiere eliminar ese articulo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (Respuesta == DialogResult.Yes)
+                {
+                    seleccionado = (Articulo)dgvDatos.CurrentRow.DataBoundItem;
+                    articulo.EliminarArticulo(seleccionado.ID);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+
+            }
+        }
     }
 }
