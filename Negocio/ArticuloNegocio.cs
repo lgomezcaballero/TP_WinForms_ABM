@@ -134,7 +134,7 @@ namespace Negocio
 
         }
 
-
+        //Eliminacion fisica
         public void EliminarArticulo(int Id)
         {
             try
@@ -143,6 +143,7 @@ namespace Negocio
                 datos.setConsulta("delete from ARTICULOS where Id = @Id");
                 datos.setParametros("@Id", Id);
                 datos.ejecutarAccion();
+                  
             }
             catch (Exception ex)
             {
@@ -150,5 +151,8 @@ namespace Negocio
                 throw ex;
             }
         }
+
+
+
     }
 }

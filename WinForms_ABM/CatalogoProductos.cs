@@ -20,9 +20,12 @@ namespace WinForms_ABM
             InitializeComponent();
         }
 
+        
+
         private void FormInicio_Load(object sender, EventArgs e)
         {
             actualizar();
+
         }
 
         private void dgvDatos_SelectionChanged(object sender, EventArgs e)
@@ -40,6 +43,7 @@ namespace WinForms_ABM
             }
             catch (Exception)
             {
+                
                 pbImagen.Load("https://www.agora-gallery.com/advice/wp-content/uploads/2015/10/image-placeholder.png");
             }
         }
@@ -98,6 +102,7 @@ namespace WinForms_ABM
                 {
                     seleccionado = (Articulo)dgvDatos.CurrentRow.DataBoundItem;
                     articulo.EliminarArticulo(seleccionado.ID);
+                    actualizar();
 
                 }
 
