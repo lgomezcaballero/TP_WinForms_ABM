@@ -34,20 +34,20 @@ namespace WinForms_ABM
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblCatalogo = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.tbxFiltro = new System.Windows.Forms.TextBox();
+            this.cbxCriterio = new System.Windows.Forms.ComboBox();
+            this.cbxCampo = new System.Windows.Forms.ComboBox();
+            this.lblFiltro = new System.Windows.Forms.Label();
+            this.lblCriterio = new System.Windows.Forms.Label();
+            this.lblCampo = new System.Windows.Forms.Label();
             this.tbxBusqueda = new System.Windows.Forms.TextBox();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pbImagen = new System.Windows.Forms.PictureBox();
-            this.lblCampo = new System.Windows.Forms.Label();
-            this.lblCriterio = new System.Windows.Forms.Label();
-            this.lblFiltro = new System.Windows.Forms.Label();
-            this.cbxCampo = new System.Windows.Forms.ComboBox();
-            this.cbxCriterio = new System.Windows.Forms.ComboBox();
-            this.tbxFiltro = new System.Windows.Forms.TextBox();
-            this.btnBuscar = new System.Windows.Forms.Button();
+            this.lblBuscar = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -103,6 +103,7 @@ namespace WinForms_ABM
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel2.Controls.Add(this.lblBuscar);
             this.panel2.Controls.Add(this.btnBuscar);
             this.panel2.Controls.Add(this.tbxFiltro);
             this.panel2.Controls.Add(this.cbxCriterio);
@@ -110,7 +111,6 @@ namespace WinForms_ABM
             this.panel2.Controls.Add(this.lblFiltro);
             this.panel2.Controls.Add(this.lblCriterio);
             this.panel2.Controls.Add(this.lblCampo);
-            this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Controls.Add(this.tbxBusqueda);
             this.panel2.Controls.Add(this.btnEditar);
             this.panel2.Controls.Add(this.btnEliminar);
@@ -122,19 +122,74 @@ namespace WinForms_ABM
             this.panel2.Size = new System.Drawing.Size(608, 450);
             this.panel2.TabIndex = 4;
             // 
-            // comboBox1
+            // btnBuscar
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(451, 54);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(104, 21);
-            this.comboBox1.TabIndex = 7;
+            this.btnBuscar.Location = new System.Drawing.Point(512, 408);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 14;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // tbxFiltro
+            // 
+            this.tbxFiltro.Location = new System.Drawing.Point(368, 411);
+            this.tbxFiltro.Name = "tbxFiltro";
+            this.tbxFiltro.Size = new System.Drawing.Size(128, 20);
+            this.tbxFiltro.TabIndex = 13;
+            // 
+            // cbxCriterio
+            // 
+            this.cbxCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxCriterio.FormattingEnabled = true;
+            this.cbxCriterio.Location = new System.Drawing.Point(218, 410);
+            this.cbxCriterio.Name = "cbxCriterio";
+            this.cbxCriterio.Size = new System.Drawing.Size(109, 21);
+            this.cbxCriterio.TabIndex = 12;
+            // 
+            // cbxCampo
+            // 
+            this.cbxCampo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxCampo.FormattingEnabled = true;
+            this.cbxCampo.Location = new System.Drawing.Point(61, 411);
+            this.cbxCampo.Name = "cbxCampo";
+            this.cbxCampo.Size = new System.Drawing.Size(106, 21);
+            this.cbxCampo.TabIndex = 11;
+            this.cbxCampo.SelectedIndexChanged += new System.EventHandler(this.cbxCampo_SelectedIndexChanged);
+            // 
+            // lblFiltro
+            // 
+            this.lblFiltro.AutoSize = true;
+            this.lblFiltro.Location = new System.Drawing.Point(333, 414);
+            this.lblFiltro.Name = "lblFiltro";
+            this.lblFiltro.Size = new System.Drawing.Size(29, 13);
+            this.lblFiltro.TabIndex = 10;
+            this.lblFiltro.Text = "Filtro";
+            // 
+            // lblCriterio
+            // 
+            this.lblCriterio.AutoSize = true;
+            this.lblCriterio.Location = new System.Drawing.Point(175, 414);
+            this.lblCriterio.Name = "lblCriterio";
+            this.lblCriterio.Size = new System.Drawing.Size(39, 13);
+            this.lblCriterio.TabIndex = 9;
+            this.lblCriterio.Text = "Criterio";
+            // 
+            // lblCampo
+            // 
+            this.lblCampo.AutoSize = true;
+            this.lblCampo.Location = new System.Drawing.Point(20, 414);
+            this.lblCampo.Name = "lblCampo";
+            this.lblCampo.Size = new System.Drawing.Size(40, 13);
+            this.lblCampo.TabIndex = 8;
+            this.lblCampo.Text = "Campo";
             // 
             // tbxBusqueda
             // 
-            this.tbxBusqueda.Location = new System.Drawing.Point(23, 55);
+            this.tbxBusqueda.Location = new System.Drawing.Point(74, 55);
             this.tbxBusqueda.Name = "tbxBusqueda";
-            this.tbxBusqueda.Size = new System.Drawing.Size(422, 20);
+            this.tbxBusqueda.Size = new System.Drawing.Size(481, 20);
             this.tbxBusqueda.TabIndex = 6;
             this.tbxBusqueda.TextChanged += new System.EventHandler(this.tbxBusqueda_TextChanged);
             // 
@@ -188,68 +243,14 @@ namespace WinForms_ABM
             this.pbImagen.TabIndex = 0;
             this.pbImagen.TabStop = false;
             // 
-            // lblCampo
+            // lblBuscar
             // 
-            this.lblCampo.AutoSize = true;
-            this.lblCampo.Location = new System.Drawing.Point(20, 414);
-            this.lblCampo.Name = "lblCampo";
-            this.lblCampo.Size = new System.Drawing.Size(40, 13);
-            this.lblCampo.TabIndex = 8;
-            this.lblCampo.Text = "Campo";
-            // 
-            // lblCriterio
-            // 
-            this.lblCriterio.AutoSize = true;
-            this.lblCriterio.Location = new System.Drawing.Point(175, 414);
-            this.lblCriterio.Name = "lblCriterio";
-            this.lblCriterio.Size = new System.Drawing.Size(39, 13);
-            this.lblCriterio.TabIndex = 9;
-            this.lblCriterio.Text = "Criterio";
-            // 
-            // lblFiltro
-            // 
-            this.lblFiltro.AutoSize = true;
-            this.lblFiltro.Location = new System.Drawing.Point(333, 414);
-            this.lblFiltro.Name = "lblFiltro";
-            this.lblFiltro.Size = new System.Drawing.Size(29, 13);
-            this.lblFiltro.TabIndex = 10;
-            this.lblFiltro.Text = "Filtro";
-            // 
-            // cbxCampo
-            // 
-            this.cbxCampo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxCampo.FormattingEnabled = true;
-            this.cbxCampo.Location = new System.Drawing.Point(61, 411);
-            this.cbxCampo.Name = "cbxCampo";
-            this.cbxCampo.Size = new System.Drawing.Size(106, 21);
-            this.cbxCampo.TabIndex = 11;
-            this.cbxCampo.SelectedIndexChanged += new System.EventHandler(this.cbxCampo_SelectedIndexChanged);
-            // 
-            // cbxCriterio
-            // 
-            this.cbxCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxCriterio.FormattingEnabled = true;
-            this.cbxCriterio.Location = new System.Drawing.Point(218, 410);
-            this.cbxCriterio.Name = "cbxCriterio";
-            this.cbxCriterio.Size = new System.Drawing.Size(109, 21);
-            this.cbxCriterio.TabIndex = 12;
-            // 
-            // tbxFiltro
-            // 
-            this.tbxFiltro.Location = new System.Drawing.Point(368, 411);
-            this.tbxFiltro.Name = "tbxFiltro";
-            this.tbxFiltro.Size = new System.Drawing.Size(128, 20);
-            this.tbxFiltro.TabIndex = 13;
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Location = new System.Drawing.Point(512, 408);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscar.TabIndex = 14;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.lblBuscar.AutoSize = true;
+            this.lblBuscar.Location = new System.Drawing.Point(25, 58);
+            this.lblBuscar.Name = "lblBuscar";
+            this.lblBuscar.Size = new System.Drawing.Size(43, 13);
+            this.lblBuscar.TabIndex = 15;
+            this.lblBuscar.Text = "Buscar:";
             // 
             // FormInicio
             // 
@@ -284,7 +285,6 @@ namespace WinForms_ABM
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pbImagen;
         private System.Windows.Forms.Label lblCatalogo;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox tbxBusqueda;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TextBox tbxFiltro;
@@ -293,6 +293,7 @@ namespace WinForms_ABM
         private System.Windows.Forms.Label lblFiltro;
         private System.Windows.Forms.Label lblCriterio;
         private System.Windows.Forms.Label lblCampo;
+        private System.Windows.Forms.Label lblBuscar;
     }
 }
 
