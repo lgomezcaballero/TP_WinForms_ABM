@@ -36,11 +36,12 @@ namespace WinForms_ABM
             this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Filtro = new System.Windows.Forms.TextBox();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pbImagen = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -96,9 +97,10 @@ namespace WinForms_ABM
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.comboBox1);
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.Filtro);
             this.panel2.Controls.Add(this.btnEditar);
             this.panel2.Controls.Add(this.btnAgregar);
             this.panel2.Controls.Add(this.dgvDatos);
@@ -126,12 +128,13 @@ namespace WinForms_ABM
             this.comboBox1.Size = new System.Drawing.Size(104, 21);
             this.comboBox1.TabIndex = 7;
             // 
-            // textBox1
+            // Filtro
             // 
-            this.textBox1.Location = new System.Drawing.Point(23, 55);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(422, 20);
-            this.textBox1.TabIndex = 6;
+            this.Filtro.Location = new System.Drawing.Point(111, 55);
+            this.Filtro.Name = "Filtro";
+            this.Filtro.Size = new System.Drawing.Size(219, 20);
+            this.Filtro.TabIndex = 6;
+            this.Filtro.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // btnEditar
             // 
@@ -173,6 +176,16 @@ namespace WinForms_ABM
             this.pbImagen.TabIndex = 0;
             this.pbImagen.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(20, 58);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(78, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Buscar Articulo";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
             // FormInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -206,8 +219,9 @@ namespace WinForms_ABM
         private System.Windows.Forms.PictureBox pbImagen;
         private System.Windows.Forms.Label lblCatalogo;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Filtro;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
     }
 }
 

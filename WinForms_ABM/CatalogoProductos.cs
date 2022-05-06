@@ -55,15 +55,23 @@ namespace WinForms_ABM
             {
                 listaArticulos = negocio.listar();
                 dgvDatos.DataSource = listaArticulos;
-                dgvDatos.Columns["ImagenUrl"].Visible = false;
+                OcultarColumnas();
+                //dgvDatos.Columns["ImagenUrl"].Visible = false;
                 //dgvDatos.Columns["Codigo"].Width = 40;
-                cargarImagen(listaArticulos[0].ImagenUrl);
+                //cargarImagen(listaArticulos[0].ImagenUrl);
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void OcultarColumnas()
+        {
+            dgvDatos.Columns ["ImagenUrl"].Visible = false;
+            //dgvDatos.Columns["Codigo"].Width = 40;
+            cargarImagen(listaArticulos[0].ImagenUrl);
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -113,6 +121,41 @@ namespace WinForms_ABM
                 MessageBox.Show(ex.ToString());
 
             }
+        }
+
+       
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            List<Articulo> ArticulosFiltrados;
+            string filtro = Filtro.Text;
+
+            if(filtro != "")
+            {
+                //Aca filtra por Nombre del articulo o por su codigo, se puede hacer que filtre por otro atributos del articulo
+             ArticulosFiltrados = listaArticulos.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()) || x.Codigo.ToUpper().Contains(filtro.ToUpper()));      
+            }
+
+            else
+            {
+                ArticulosFiltrados = listaArticulos;
+            }
+
+
+            dgvDatos.DataSource = null;
+            dgvDatos.DataSource = ArticulosFiltrados;
+            OcultarColumnas();
+
         }
     }
 }
