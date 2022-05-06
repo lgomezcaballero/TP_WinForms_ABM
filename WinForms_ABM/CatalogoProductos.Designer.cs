@@ -34,14 +34,20 @@ namespace WinForms_ABM
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblCatalogo = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.Filtro = new System.Windows.Forms.TextBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.tbxFiltro = new System.Windows.Forms.TextBox();
+            this.cbxCriterio = new System.Windows.Forms.ComboBox();
+            this.cbxCampo = new System.Windows.Forms.ComboBox();
+            this.lblFiltro = new System.Windows.Forms.Label();
+            this.lblCriterio = new System.Windows.Forms.Label();
+            this.lblCampo = new System.Windows.Forms.Label();
+            this.tbxBusqueda = new System.Windows.Forms.TextBox();
             this.btnEditar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pbImagen = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblBusqueda = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -97,44 +103,95 @@ namespace WinForms_ABM
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.comboBox1);
-            this.panel2.Controls.Add(this.Filtro);
+            this.panel2.Controls.Add(this.lblBusqueda);
+            this.panel2.Controls.Add(this.btnBuscar);
+            this.panel2.Controls.Add(this.tbxFiltro);
+            this.panel2.Controls.Add(this.cbxCriterio);
+            this.panel2.Controls.Add(this.cbxCampo);
+            this.panel2.Controls.Add(this.lblFiltro);
+            this.panel2.Controls.Add(this.lblCriterio);
+            this.panel2.Controls.Add(this.lblCampo);
+            this.panel2.Controls.Add(this.tbxBusqueda);
             this.panel2.Controls.Add(this.btnEditar);
+            this.panel2.Controls.Add(this.btnEliminar);
             this.panel2.Controls.Add(this.btnAgregar);
             this.panel2.Controls.Add(this.dgvDatos);
             this.panel2.Controls.Add(this.lblListaArticulos);
             this.panel2.Location = new System.Drawing.Point(0, 49);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(608, 422);
+            this.panel2.Size = new System.Drawing.Size(608, 450);
             this.panel2.TabIndex = 4;
             // 
-            // button1
+            // btnBuscar
             // 
-            this.button1.Location = new System.Drawing.Point(256, 369);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(74, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Eliminar ";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnBuscar.Location = new System.Drawing.Point(512, 408);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 14;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // comboBox1
+            // tbxFiltro
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(451, 54);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(104, 21);
-            this.comboBox1.TabIndex = 7;
+            this.tbxFiltro.Location = new System.Drawing.Point(368, 411);
+            this.tbxFiltro.Name = "tbxFiltro";
+            this.tbxFiltro.Size = new System.Drawing.Size(128, 20);
+            this.tbxFiltro.TabIndex = 13;
             // 
-            // Filtro
+            // cbxCriterio
             // 
-            this.Filtro.Location = new System.Drawing.Point(111, 55);
-            this.Filtro.Name = "Filtro";
-            this.Filtro.Size = new System.Drawing.Size(219, 20);
-            this.Filtro.TabIndex = 6;
-            this.Filtro.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.cbxCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxCriterio.FormattingEnabled = true;
+            this.cbxCriterio.Location = new System.Drawing.Point(218, 410);
+            this.cbxCriterio.Name = "cbxCriterio";
+            this.cbxCriterio.Size = new System.Drawing.Size(109, 21);
+            this.cbxCriterio.TabIndex = 12;
+            // 
+            // cbxCampo
+            // 
+            this.cbxCampo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxCampo.FormattingEnabled = true;
+            this.cbxCampo.Location = new System.Drawing.Point(61, 411);
+            this.cbxCampo.Name = "cbxCampo";
+            this.cbxCampo.Size = new System.Drawing.Size(106, 21);
+            this.cbxCampo.TabIndex = 11;
+            this.cbxCampo.SelectedIndexChanged += new System.EventHandler(this.cbxCampo_SelectedIndexChanged);
+            // 
+            // lblFiltro
+            // 
+            this.lblFiltro.AutoSize = true;
+            this.lblFiltro.Location = new System.Drawing.Point(333, 414);
+            this.lblFiltro.Name = "lblFiltro";
+            this.lblFiltro.Size = new System.Drawing.Size(29, 13);
+            this.lblFiltro.TabIndex = 10;
+            this.lblFiltro.Text = "Filtro";
+            // 
+            // lblCriterio
+            // 
+            this.lblCriterio.AutoSize = true;
+            this.lblCriterio.Location = new System.Drawing.Point(175, 414);
+            this.lblCriterio.Name = "lblCriterio";
+            this.lblCriterio.Size = new System.Drawing.Size(39, 13);
+            this.lblCriterio.TabIndex = 9;
+            this.lblCriterio.Text = "Criterio";
+            // 
+            // lblCampo
+            // 
+            this.lblCampo.AutoSize = true;
+            this.lblCampo.Location = new System.Drawing.Point(20, 414);
+            this.lblCampo.Name = "lblCampo";
+            this.lblCampo.Size = new System.Drawing.Size(40, 13);
+            this.lblCampo.TabIndex = 8;
+            this.lblCampo.Text = "Campo";
+            // 
+            // tbxBusqueda
+            // 
+            this.tbxBusqueda.Location = new System.Drawing.Point(84, 55);
+            this.tbxBusqueda.Name = "tbxBusqueda";
+            this.tbxBusqueda.Size = new System.Drawing.Size(471, 20);
+            this.tbxBusqueda.TabIndex = 6;
+            this.tbxBusqueda.TextChanged += new System.EventHandler(this.tbxBusqueda_TextChanged);
             // 
             // btnEditar
             // 
@@ -145,6 +202,16 @@ namespace WinForms_ABM
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(264, 369);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.TabIndex = 4;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnAgregar
             // 
@@ -164,7 +231,7 @@ namespace WinForms_ABM
             this.panel3.Controls.Add(this.pbImagen);
             this.panel3.Location = new System.Drawing.Point(608, 49);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(303, 422);
+            this.panel3.Size = new System.Drawing.Size(303, 450);
             this.panel3.TabIndex = 5;
             // 
             // pbImagen
@@ -176,21 +243,20 @@ namespace WinForms_ABM
             this.pbImagen.TabIndex = 0;
             this.pbImagen.TabStop = false;
             // 
-            // label1
+            // lblBusqueda
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 58);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Buscar Articulo";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.lblBusqueda.AutoSize = true;
+            this.lblBusqueda.Location = new System.Drawing.Point(20, 58);
+            this.lblBusqueda.Name = "lblBusqueda";
+            this.lblBusqueda.Size = new System.Drawing.Size(58, 13);
+            this.lblBusqueda.TabIndex = 15;
+            this.lblBusqueda.Text = "Busqueda:";
             // 
             // FormInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(911, 471);
+            this.ClientSize = new System.Drawing.Size(911, 499);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -214,14 +280,20 @@ namespace WinForms_ABM
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pbImagen;
         private System.Windows.Forms.Label lblCatalogo;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox Filtro;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tbxBusqueda;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.TextBox tbxFiltro;
+        private System.Windows.Forms.ComboBox cbxCriterio;
+        private System.Windows.Forms.ComboBox cbxCampo;
+        private System.Windows.Forms.Label lblFiltro;
+        private System.Windows.Forms.Label lblCriterio;
+        private System.Windows.Forms.Label lblCampo;
+        private System.Windows.Forms.Label lblBusqueda;
     }
 }
 

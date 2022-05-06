@@ -20,18 +20,21 @@ namespace WinForms_ABM
             InitializeComponent();
         }
 
-        
-
         private void FormInicio_Load(object sender, EventArgs e)
         {
             actualizar();
-
+            cbxCampo.Items.Add("Código");
+            cbxCampo.Items.Add("Nombre");
+            cbxCampo.Items.Add("Precio");
         }
 
         private void dgvDatos_SelectionChanged(object sender, EventArgs e)
         {
-            Articulo articuloSeleccionado = (Articulo)dgvDatos.CurrentRow.DataBoundItem;
-            cargarImagen(articuloSeleccionado.ImagenUrl);
+            if(dgvDatos.CurrentRow != null)
+            {
+                Articulo articuloSeleccionado = (Articulo)dgvDatos.CurrentRow.DataBoundItem;
+                cargarImagen(articuloSeleccionado.ImagenUrl);
+            }
         }
 
         private void cargarImagen(string url)
@@ -43,7 +46,6 @@ namespace WinForms_ABM
             }
             catch (Exception)
             {
-                
                 pbImagen.Load("https://www.agora-gallery.com/advice/wp-content/uploads/2015/10/image-placeholder.png");
             }
         }
@@ -55,10 +57,9 @@ namespace WinForms_ABM
             {
                 listaArticulos = negocio.listar();
                 dgvDatos.DataSource = listaArticulos;
-                OcultarColumnas();
-                //dgvDatos.Columns["ImagenUrl"].Visible = false;
+                ocultarColumnas();
                 //dgvDatos.Columns["Codigo"].Width = 40;
-                //cargarImagen(listaArticulos[0].ImagenUrl);
+                cargarImagen(listaArticulos[0].ImagenUrl);
             }
             catch (Exception ex)
             {
@@ -67,11 +68,10 @@ namespace WinForms_ABM
             }
         }
 
-        private void OcultarColumnas()
+        private void ocultarColumnas()
         {
-            dgvDatos.Columns ["ImagenUrl"].Visible = false;
-            //dgvDatos.Columns["Codigo"].Width = 40;
-            cargarImagen(listaArticulos[0].ImagenUrl);
+            dgvDatos.Columns["ImagenUrl"].Visible = false;
+            dgvDatos.Columns["Id"].Visible = false;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -83,79 +83,91 @@ namespace WinForms_ABM
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            //Selecciona el articulo actual
-            Articulo selecionado;
-            selecionado = (Articulo)dgvDatos.CurrentRow.DataBoundItem;
-            
-            
-            frmAltaArticulo modoficar = new frmAltaArticulo(selecionado);  
-            modoficar.ShowDialog(); 
-            //Cargar();
+            Articulo seleccionado;
+            seleccionado = (Articulo)dgvDatos.CurrentRow.DataBoundItem;
+            frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
+            modificar.ShowDialog();
+            actualizar();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnEliminar_Click(object sender, EventArgs e)
         {
-
-
-            ArticuloNegocio articulo = new ArticuloNegocio();
-            Articulo seleccionado = new Articulo();
-
-
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            Articulo articulo;
             try
             {
-
-                DialogResult Respuesta = MessageBox.Show("¿Esta seguro que quiere eliminar ese articulo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                if (Respuesta == DialogResult.Yes)
+                DialogResult respuesta = MessageBox.Show("¿Desea eliminar el articulo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (respuesta == DialogResult.Yes)
                 {
-                    seleccionado = (Articulo)dgvDatos.CurrentRow.DataBoundItem;
-                    articulo.EliminarArticulo(seleccionado.ID);
+                    articulo = (Articulo)dgvDatos.CurrentRow.DataBoundItem;
+                    negocio.eliminarArticulo(articulo.ID);
                     actualizar();
-
                 }
-
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.ToString());
-
             }
         }
 
-       
 
-        private void label1_Click(object sender, EventArgs e)
+
+        private void tbxBusqueda_TextChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            List<Articulo> ArticulosFiltrados;
-            string filtro = Filtro.Text;
-
-            if(filtro != "")
+            List<Articulo> listaFiltrada;
+            string filtro = tbxBusqueda.Text;
+            if (filtro.Length > 2)
             {
-                //Aca filtra por Nombre del articulo o por su codigo, se puede hacer que filtre por otro atributos del articulo
-             ArticulosFiltrados = listaArticulos.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()) || x.Codigo.ToUpper().Contains(filtro.ToUpper()));      
+                listaFiltrada = listaArticulos.FindAll(x => x.Nombre.ToLower().Contains(filtro.ToLower()) ||
+                x.Marca.Descripcion.ToLower().Contains(filtro.ToLower()));
             }
-
             else
             {
-                ArticulosFiltrados = listaArticulos;
+                listaFiltrada = listaArticulos;
             }
-
-
             dgvDatos.DataSource = null;
-            dgvDatos.DataSource = ArticulosFiltrados;
-            OcultarColumnas();
+            dgvDatos.DataSource = listaFiltrada;
+            ocultarColumnas();
+        }
 
+        private void cbxCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cbxCampo.SelectedItem.ToString();
+            if(opcion == "Código" || opcion == "Nombre")
+            {
+                cbxCriterio.Items.Clear();
+                cbxCriterio.Items.Add("Empieza con");
+                cbxCriterio.Items.Add("Termina con");
+                cbxCriterio.Items.Add("Contiene");
+            }
+            else if (opcion == "Precio")
+            {
+                cbxCriterio.Items.Clear();
+                cbxCriterio.Items.Add("Menor a");
+                cbxCriterio.Items.Add("Mayor a");
+                cbxCriterio.Items.Add("Igual a");
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            try
+            {
+                string campo = cbxCampo.SelectedItem.ToString();
+                string criterio = cbxCriterio.SelectedItem.ToString();
+                string filtro = tbxFiltro.Text;
+                if (filtro == "")
+                    dgvDatos.DataSource = listaArticulos;
+                else
+                    dgvDatos.DataSource = negocio.filtrar(campo, criterio, filtro);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }
