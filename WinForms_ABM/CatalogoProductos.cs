@@ -29,7 +29,7 @@ namespace WinForms_ABM
             cbxCampo.Items.Add("Código");
             cbxCampo.Items.Add("Nombre");
             cbxCampo.Items.Add("Precio");
-            //btnAgregar.
+            
             cargarAgregar();
            //pbAtras.Load("https://w7.pngwing.com/pngs/398/861/png-transparent-flickr-logo-computer-icons-button-back-angle-text-logo.png");
         }
@@ -353,7 +353,7 @@ namespace WinForms_ABM
                 }
 
                 //Esto valida que el dato que se ingresa en el campo precio, sea obligatoriamente un numero
-                if (soloNumero(tbxPrecio.Text)==false) 
+                if (soloNumero(tbxPrecio.Text)) 
                 {
                     MessageBox.Show("El dato ingresado en el campo precio, no es un numero");
                     return;
@@ -423,6 +423,19 @@ namespace WinForms_ABM
         private void btnAtras_Click(object sender, EventArgs e)
         {
             tpCatalogo.SelectedIndex = 0;
+        }
+
+        //Esto valida si una cadena contiene numeros decimales
+        private bool soloNumeroDecimales(string cadena)
+        {
+
+            foreach (char item in cadena)
+            {
+
+                if (!(char.IsNumber(item)) && !(item == ',') && !(item == '.'))
+                    return false;
+            }
+            return true;
         }
 
         private void btnBusquedaAvanzada_Click(object sender, EventArgs e)
