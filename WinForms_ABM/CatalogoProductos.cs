@@ -353,7 +353,11 @@ namespace WinForms_ABM
                 }
 
                 //Esto valida que el dato que se ingresa en el campo precio, sea obligatoriamente un numero
+<<<<<<< HEAD
                 if (soloNumero(tbxPrecio.Text)) 
+=======
+                if (soloNumeroDecimales(tbxPrecio.Text)==false) 
+>>>>>>> 8a1e5a44e389d604e19b90c195e017dc9a2d3c35
                 {
                     MessageBox.Show("El dato ingresado en el campo precio, no es un numero");
                     return;
@@ -416,6 +420,20 @@ namespace WinForms_ABM
 
                 if(!(char.IsNumber(item)))
                     return false;   
+            }
+            return true;
+        }
+
+
+        //Esto valida si una cadena contiene numeros decimales
+        private bool soloNumeroDecimales(string cadena)
+        {
+
+            foreach (char item in cadena)
+            {
+
+                if (!(char.IsNumber(item)) && !(item == ',') && !(item == '.'))
+                    return false;
             }
             return true;
         }
