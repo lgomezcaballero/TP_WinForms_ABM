@@ -1,0 +1,20 @@
+-agregar/editar
+
+ Textbox Nombre, validar que no se ingresen numeros, con un messagebox
+
+ Textbox Precio, validar que solo se ingresen numeros y validar la cantidad de ceros
+
+ investigar sobre evento rojo cuando no se cargan datos
+
+ validar que a cada campo se le cargue algo obligatoriamente
+
+
+-Busqueda avanzada
+ -Campo validar que se le carguen datos
+ -Criterio Validar que se le carguen datos
+ -Filtro: validar que se le carguen datos
+
+
+
+
+
