@@ -238,7 +238,7 @@ namespace WinForms_ABM
 
         private bool validarFiltro()
         {
-            if(cbxCampo.SelectedIndex == 2 && cbxCriterio.SelectedIndex >= 0 && !soloNumero(tbxFiltro.Text))
+            if(cbxCampo.SelectedIndex == 2 && cbxCriterio.SelectedIndex >= 0 && !soloNumeroDecimales(tbxFiltro.Text))
             {
                 MessageBox.Show("Error, introduzca valores numéricos", "Búsqueda",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -353,7 +353,7 @@ namespace WinForms_ABM
                 }
 
                 //Esto valida que el dato que se ingresa en el campo precio, sea obligatoriamente un numero
-                if (soloNumeroDecimales(tbxPrecio.Text))
+                if (!soloNumeroDecimales(tbxPrecio.Text))
                 {
                     MessageBox.Show("El dato ingresado en el campo precio, no es un numero");
                     return;
