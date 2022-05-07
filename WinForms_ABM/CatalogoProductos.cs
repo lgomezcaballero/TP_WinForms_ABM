@@ -199,12 +199,43 @@ namespace WinForms_ABM
             ocultarColumnas();
         }
 
+        private bool validarFiltro()
+        {
+            if(cbxCampo.SelectedIndex == 2 && cbxCriterio.SelectedIndex >= 0 && !soloNumero(tbxFiltro.Text))
+            {
+                MessageBox.Show("Error, introduzca valores numéricos", "Búsqueda",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            if(cbxCampo.SelectedIndex < 0 && cbxCriterio.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor, seleccione las opciones: \n- Campo\n- Criterio", "Búsqueda",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            if (cbxCampo.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor seleccione el campo a filtrar", "Búsqueda", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            if(cbxCriterio.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor seleccione el criterio a filtrar", "Búsqueda", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+
+            return true;
+        }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
+                if (!validarFiltro())
+                    return;
                 string campo = cbxCampo.SelectedItem.ToString();
                 string criterio = cbxCriterio.SelectedItem.ToString();
                 string filtro = tbxFiltro.Text;
@@ -214,6 +245,8 @@ namespace WinForms_ABM
                     dgvDatosFiltrados.DataSource = listaArticulos;
                 else
                     dgvDatosFiltrados.DataSource = negocio.filtrar(campo, criterio, filtro);
+                dgvDatosFiltrados.Columns["Id"].Visible = false;
+                dgvDatosFiltrados.Columns["ImagenUrl"].Visible = false;
             }
             catch (Exception ex)
             {

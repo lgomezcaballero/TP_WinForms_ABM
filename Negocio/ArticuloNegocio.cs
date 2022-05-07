@@ -141,7 +141,7 @@ namespace Negocio
                 string consulta = "Select a.ID, a.Codigo, a.Nombre, a.Descripcion, m.Descripcion Marca, " +
                     "c.Descripcion Categoria, a.ImagenUrl, a.Precio, m.Id as IdMarca, c.Id as IdCategoria From ARTICULOS a " +
                     "Inner Join MARCAS m on a.IdMarca = m.Id Inner Join CATEGORIAS c on a.IdCategoria = c.Id " +
-                    "Where a.Activo = 1 And ";
+                    "Where ";
                 switch (campo)
                 {
                     case "Código":

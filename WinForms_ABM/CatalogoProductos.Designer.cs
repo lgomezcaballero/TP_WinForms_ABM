@@ -425,8 +425,11 @@ namespace WinForms_ABM
             // dgvDatosFiltrados
             // 
             this.dgvDatosFiltrados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDatosFiltrados.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvDatosFiltrados.Location = new System.Drawing.Point(18, 47);
             this.dgvDatosFiltrados.Name = "dgvDatosFiltrados";
+            this.dgvDatosFiltrados.ReadOnly = true;
+            this.dgvDatosFiltrados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDatosFiltrados.Size = new System.Drawing.Size(591, 248);
             this.dgvDatosFiltrados.TabIndex = 22;
             // 
