@@ -31,6 +31,7 @@ namespace WinForms_ABM
             cbxCampo.Items.Add("Precio");
             //btnAgregar.
             cargarAgregar();
+           //pbAtras.Load("https://w7.pngwing.com/pngs/398/861/png-transparent-flickr-logo-computer-icons-button-back-angle-text-logo.png");
         }
 
         private void cargarAgregar()
@@ -89,14 +90,14 @@ namespace WinForms_ABM
             }
         }
 
-        private void dgvDatos_SelectionChanged(object sender, EventArgs e)
+        /*private void dgvDatos_SelectionChanged(object sender, EventArgs e)
         {
             if(dgvDatos.CurrentRow != null)
             {
                 Articulo articuloSeleccionado = (Articulo)dgvDatos.CurrentRow.DataBoundItem;
                 cargarImagen(articuloSeleccionado.ImagenUrl);
             }
-        }
+        }*/
 
         private void cargarImagen(string url)
         {
@@ -121,7 +122,7 @@ namespace WinForms_ABM
                 //dgvDatosFiltrados.DataSource = listaArticulos;
                 ocultarColumnas();
                 //dgvDatos.Columns["Codigo"].Width = 40;
-                cargarImagen(listaArticulos[0].ImagenUrl);
+                //cargarImagen(listaArticulos[0].ImagenUrl);
             }
             catch (Exception ex)
             {
@@ -136,10 +137,42 @@ namespace WinForms_ABM
             dgvDatos.Columns["Id"].Visible = false;
         }
 
+        private void limpiarCampos()
+        {
+            tbxBusqueda.Text = null;
+            pbImagenAdd.Image = null;
+            tbxCodigo.Text = null;
+            tbxNombre.Text = null;
+            tbxPrecio.Text = null;
+            cbxMarca.SelectedIndex = 0;
+            cbxCategoria.SelectedIndex = 0;
+            tbxImagenUrl.Text = null;
+            tbxDescripcion.Text = null;
+            cbxCampo.SelectedIndex = 0;
+            cbxCriterio.SelectedIndex = 0;
+            tbxFiltro.Text = null;
+            lblDetalleCodigo.Text = null;
+            lblNombreArticulo.Text = null;
+            lblDetalleMarca.Text = null;
+            lblDetalleCategoria.Text = null;
+            lblDetallePrecio.Text = null;
+            lblDA.Text = null;
+        }
+
+        private bool validarSeleccion(DataGridView dgv)
+        {
+            if (dgv.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un articulo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             //frmAltaArticulo alta = new frmAltaArticulo();
             //alta.ShowDialog();
+            limpiarCampos();
             tpCatalogo.SelectedIndex = 1;
             //actualizar();
             //tpCatalogo.SelectedIndex = 0;
@@ -149,6 +182,10 @@ namespace WinForms_ABM
         {
             //Articulo seleccionado;
             //articulo = new Articulo();
+            if (!validarSeleccion(dgvDatos))
+            {
+                return;
+            }
             articulo = (Articulo)dgvDatos.CurrentRow.DataBoundItem;
             //frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
             //modificar.ShowDialog();
@@ -274,6 +311,7 @@ namespace WinForms_ABM
             }
         }
 
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             //Articulo articulo = new Articulo();
@@ -282,7 +320,7 @@ namespace WinForms_ABM
             {
                 if (articulo == null)
                     articulo = new Articulo();
-
+                
 
                 //Validaciones 
 
@@ -326,6 +364,7 @@ namespace WinForms_ABM
                 articulo.Nombre = tbxNombre.Text;
                 articulo.Descripcion = tbxDescripcion.Text;
                 articulo.ImagenUrl = tbxImagenUrl.Text;
+                //pbImagenAdd.Visible = true;
                 articulo.Marca = (Marca)cbxMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cbxCategoria.SelectedItem;
                 articulo.Precio = Convert.ToDecimal(tbxPrecio.Text);
@@ -360,6 +399,8 @@ namespace WinForms_ABM
 
         private void tbxImagenUrl_Leave(object sender, EventArgs e)
         {
+            //bImagenAdd.Visible = true;
+            //pbImagenAdd = new PictureBox();
             cargarImagen(tbxImagenUrl.Text);
         }
 
@@ -378,6 +419,63 @@ namespace WinForms_ABM
             }
             return true;
         }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            tpCatalogo.SelectedIndex = 0;
+        }
+
+        private void btnBusquedaAvanzada_Click(object sender, EventArgs e)
+        {
+            tpCatalogo.SelectedIndex = 3;
+        }
+
+        private void btnDetalles_Click(object sender, EventArgs e)
+        {
+            Articulo articulo = new Articulo();
+            try
+            {
+                if (!validarSeleccion(dgvDatos))
+                {
+                    return;
+                }
+                articulo = (Articulo)dgvDatos.CurrentRow.DataBoundItem;
+                tpCatalogo.SelectedIndex = 2;
+                lblDetalleCodigo.Text = articulo.Codigo;
+                lblNombreArticulo.Text = articulo.Nombre;
+                lblDetalleMarca.Text = articulo.Marca.Descripcion;
+                lblDetalleCategoria.Text = articulo.Categoria.Descripcion;
+                lblDetallePrecio.Text = articulo.Precio.ToString();
+                lblDA.Text = articulo.Descripcion;
+                cargarImagenDetalles(articulo.ImagenUrl);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void cargarImagenDetalles(string url)
+        {
+            try
+            {
+                pbImagenDetalles.Load(url);
+
+            }
+            catch (Exception)
+            {
+                pbImagenDetalles.Load("https://www.agora-gallery.com/advice/wp-content/uploads/2015/10/image-placeholder.png");
+            }
+        }
+
+        private void lblDetallesAtras_Click(object sender, EventArgs e)
+        {
+            limpiarCampos();
+            tpCatalogo.SelectedIndex = 0;
+        }
+
+
 
 
 
