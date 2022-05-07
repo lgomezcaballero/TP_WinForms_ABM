@@ -250,6 +250,45 @@ namespace WinForms_ABM
                 if (articulo == null)
                     articulo = new Articulo();
 
+
+                //Validaciones 
+
+                //Esto valida que se ingrese un campo obligatoriamente en Codigo
+                if (string.IsNullOrEmpty(tbxCodigo.Text))
+                {
+                    MessageBox.Show("Debe cargar el campo de Codigo");
+                    return;
+                }
+
+                //Esto valida que se ingrese un campo obligatoriamente en Nombre
+                if (string.IsNullOrEmpty(tbxNombre.Text))
+                {
+                    MessageBox.Show("Debe cargar el campo de Nombre");
+                    return;
+                }
+
+                //Esto valida que se ingrese un campo obligatoriamente en Precio
+                if (string.IsNullOrEmpty(tbxPrecio.Text))
+                {
+                    MessageBox.Show("Debe cargar el campo de Precio");
+                    return;
+                }
+
+                //Esto valida que se ingrese un campo obligatoriamente en Descripcion
+                if (string.IsNullOrEmpty(tbxDescripcion.Text))
+                {
+                    MessageBox.Show("Debe cargar el campo de Descripcion");
+                    return;
+                }
+
+                //Esto valida que el dato que se ingresa en el campo precio, sea obligatoriamente un numero
+                if (soloNumero(tbxPrecio.Text)==false) 
+                {
+                    MessageBox.Show("El dato ingresado en el campo precio, no es un numero");
+                    return;
+                }
+
+
                 articulo.Codigo = tbxCodigo.Text;
                 articulo.Nombre = tbxNombre.Text;
                 articulo.Descripcion = tbxDescripcion.Text;
@@ -290,6 +329,24 @@ namespace WinForms_ABM
         {
             cargarImagen(tbxImagenUrl.Text);
         }
+
+
+        //Validaciones
+
+        //Esto valida si una cadena no contiene un numero
+        private bool soloNumero(string cadena)
+        {
+
+            foreach (char item in cadena)
+            {
+
+                if(!(char.IsNumber(item)))
+                    return false;   
+            }
+            return true;
+        }
+
+
 
         /*private void btnBuscar_Click(object sender, EventArgs e)
         {
