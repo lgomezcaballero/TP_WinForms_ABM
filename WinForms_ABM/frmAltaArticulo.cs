@@ -14,8 +14,8 @@ namespace WinForms_ABM
 {
     public partial class frmAltaArticulo : Form
     {
-        private Articulo articulo = null;
-        public frmAltaArticulo()
+        //private Articulo articulo = null;
+       /* public frmAltaArticulo()
         {
             InitializeComponent();
         }
@@ -23,8 +23,8 @@ namespace WinForms_ABM
         public frmAltaArticulo(Articulo articulo)
         {
             InitializeComponent();
-            this.articulo = articulo;
-            Text = "Modificar Artículo";
+            //this.articulo = articulo;
+            //Text = "Modificar Artículo";
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -120,5 +120,16 @@ namespace WinForms_ABM
                 pbImagen.Load("https://www.agora-gallery.com/advice/wp-content/uploads/2015/10/image-placeholder.png");
             }
         }
-    }
+
+        private void btnAgregarImagen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog archivo = new OpenFileDialog();
+            archivo.Filter = "jpg|*.jpg";
+            if(archivo.ShowDialog() == DialogResult.OK)
+            {
+                tbxImagenUrl.Text = archivo.FileName;
+                cargarImagen(archivo.FileName);
+            }
+        }
+    */}
 }

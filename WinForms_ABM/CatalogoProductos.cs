@@ -15,9 +15,12 @@ namespace WinForms_ABM
     public partial class FormInicio : Form
     {
         private List<Articulo> listaArticulos;
+        private Articulo articulo = null;
         public FormInicio()
         {
             InitializeComponent();
+            this.articulo = articulo;
+            //Text = "Modificar Artículo";
         }
 
         private void FormInicio_Load(object sender, EventArgs e)
@@ -26,6 +29,64 @@ namespace WinForms_ABM
             cbxCampo.Items.Add("Código");
             cbxCampo.Items.Add("Nombre");
             cbxCampo.Items.Add("Precio");
+            //btnAgregar.
+            cargarAgregar();
+        }
+
+        private void cargarAgregar()
+        {
+            MarcaNegocio marca = new MarcaNegocio();
+
+            CategoriaNegocio categoria = new CategoriaNegocio();
+            try
+            {
+                cbxMarca.DataSource = marca.listar();
+                cbxMarca.ValueMember = "Id";
+                cbxMarca.DisplayMember = "Descripcion";
+                cbxCategoria.DataSource = categoria.listar();
+                cbxCategoria.ValueMember = "Id";
+                cbxCategoria.DisplayMember = "Descripcion";
+
+                /*if (articulo != null)
+                {
+                    tbxCodigo.Text = articulo.Codigo;
+                    tbxNombre.Text = articulo.Nombre;
+                    tbxDescripcion.Text = articulo.Descripcion;
+                    tbxImagenUrl.Text = articulo.ImagenUrl;
+                    cbxMarca.SelectedValue = articulo.Marca.ID;
+                    cbxCategoria.SelectedValue = articulo.Categoria.ID;
+                    tbxPrecio.Text = articulo.Precio.ToString();
+                    cargarImagen(articulo.ImagenUrl);
+                }*/
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void cargarEditar()
+        {
+            try
+            {
+                if (articulo != null)
+                {
+                    tbxCodigo.Text = articulo.Codigo;
+                    tbxNombre.Text = articulo.Nombre;
+                    tbxDescripcion.Text = articulo.Descripcion;
+                    tbxImagenUrl.Text = articulo.ImagenUrl;
+                    cbxMarca.SelectedValue = articulo.Marca.ID;
+                    cbxCategoria.SelectedValue = articulo.Categoria.ID;
+                    tbxPrecio.Text = articulo.Precio.ToString();
+                    cargarImagen(articulo.ImagenUrl);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void dgvDatos_SelectionChanged(object sender, EventArgs e)
@@ -41,12 +102,12 @@ namespace WinForms_ABM
         {
             try
             {
-                pbImagen.Load(url);
+                pbImagenAdd.Load(url);
 
             }
             catch (Exception)
             {
-                pbImagen.Load("https://www.agora-gallery.com/advice/wp-content/uploads/2015/10/image-placeholder.png");
+                pbImagenAdd.Load("https://www.agora-gallery.com/advice/wp-content/uploads/2015/10/image-placeholder.png");
             }
         }
 
@@ -57,6 +118,7 @@ namespace WinForms_ABM
             {
                 listaArticulos = negocio.listar();
                 dgvDatos.DataSource = listaArticulos;
+                //dgvDatosFiltrados.DataSource = listaArticulos;
                 ocultarColumnas();
                 //dgvDatos.Columns["Codigo"].Width = 40;
                 cargarImagen(listaArticulos[0].ImagenUrl);
@@ -76,18 +138,24 @@ namespace WinForms_ABM
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            frmAltaArticulo alta = new frmAltaArticulo();
-            alta.ShowDialog();
-            actualizar();
+            //frmAltaArticulo alta = new frmAltaArticulo();
+            //alta.ShowDialog();
+            tpCatalogo.SelectedIndex = 1;
+            //actualizar();
+            //tpCatalogo.SelectedIndex = 0;
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            Articulo seleccionado;
-            seleccionado = (Articulo)dgvDatos.CurrentRow.DataBoundItem;
-            frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
-            modificar.ShowDialog();
-            actualizar();
+            //Articulo seleccionado;
+            //articulo = new Articulo();
+            articulo = (Articulo)dgvDatos.CurrentRow.DataBoundItem;
+            //frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
+            //modificar.ShowDialog();
+            cargarEditar();
+            tpCatalogo.SelectedIndex = 1;
+            //cargarAgregar();
+            //actualizar();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -131,10 +199,33 @@ namespace WinForms_ABM
             ocultarColumnas();
         }
 
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            try
+            {
+                string campo = cbxCampo.SelectedItem.ToString();
+                string criterio = cbxCriterio.SelectedItem.ToString();
+                string filtro = tbxFiltro.Text;
+                //listaArticulos = negocio.listar();
+                //dgvDatosFiltrados.DataSource = listaArticulos;
+                if (filtro == "")
+                    dgvDatosFiltrados.DataSource = listaArticulos;
+                else
+                    dgvDatosFiltrados.DataSource = negocio.filtrar(campo, criterio, filtro);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         private void cbxCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
             string opcion = cbxCampo.SelectedItem.ToString();
-            if(opcion == "Código" || opcion == "Nombre")
+            if (opcion == "Código" || opcion == "Nombre")
             {
                 cbxCriterio.Items.Clear();
                 cbxCriterio.Items.Add("Empieza con");
@@ -150,18 +241,38 @@ namespace WinForms_ABM
             }
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            ArticuloNegocio negocio = new ArticuloNegocio();
+            //Articulo articulo = new Articulo();
+            ArticuloNegocio datos = new ArticuloNegocio();
             try
             {
-                string campo = cbxCampo.SelectedItem.ToString();
-                string criterio = cbxCriterio.SelectedItem.ToString();
-                string filtro = tbxFiltro.Text;
-                if (filtro == "")
-                    dgvDatos.DataSource = listaArticulos;
+                if (articulo == null)
+                    articulo = new Articulo();
+
+                articulo.Codigo = tbxCodigo.Text;
+                articulo.Nombre = tbxNombre.Text;
+                articulo.Descripcion = tbxDescripcion.Text;
+                articulo.ImagenUrl = tbxImagenUrl.Text;
+                articulo.Marca = (Marca)cbxMarca.SelectedItem;
+                articulo.Categoria = (Categoria)cbxCategoria.SelectedItem;
+                articulo.Precio = Convert.ToDecimal(tbxPrecio.Text);
+
+                if (articulo.ID == 0)
+                {
+                    datos.agregarArticulo(articulo);
+                    MessageBox.Show("El artículo se ha agregado exitosamente");
+
+                }
                 else
-                    dgvDatos.DataSource = negocio.filtrar(campo, criterio, filtro);
+                {
+                    datos.modificarArticulo(articulo);
+                    MessageBox.Show("El articulo se ha modificado exitosamente");
+
+                }
+                //Close();
+                tpCatalogo.SelectedIndex = 0;
+                actualizar();
             }
             catch (Exception ex)
             {
@@ -169,5 +280,37 @@ namespace WinForms_ABM
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            tpCatalogo.SelectedIndex = 0;
+        }
+
+        private void tbxImagenUrl_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(tbxImagenUrl.Text);
+        }
+
+        /*private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            try
+            {
+                string campo = cbxCampo.SelectedItem.ToString();
+                string criterio = cbxCriterio.SelectedItem.ToString();
+                string filtro = tbxFiltro.Text;
+                //listaArticulos = negocio.listar();
+                //dgvDatosFiltrados.DataSource = listaArticulos;
+                if (filtro == "")
+                    dgvDatosFiltrados.DataSource = listaArticulos;
+                else
+                    dgvDatosFiltrados.DataSource = negocio.filtrar(campo, criterio, filtro);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }*/
     }
 }
