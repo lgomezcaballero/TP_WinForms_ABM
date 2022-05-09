@@ -436,6 +436,9 @@ namespace WinForms_ABM
 
         private void btnAtras_Click(object sender, EventArgs e)
         {
+            //cbxCampo.SelectedIndex = null;
+            tbxFiltro.Text = null;
+            dgvDatosFiltrados.DataSource = null;
             tpCatalogo.SelectedIndex = 0;
         }
 
